@@ -1,0 +1,20 @@
+name: ecosystem_project
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - geopandas
+  - contextily
+  - shapely
+  - scikit-learn
+  - pip:
+      - torch
+      - torchvision
+      - tifffile
+      - pillow
