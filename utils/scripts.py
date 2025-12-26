@@ -91,7 +91,7 @@ def select_best_experiments(log_path):
     return best_per_model
 
 
-def plot_experiments(log_path):
+def plot_experiments(log_path, save_path=None):
     """
     Plots validation scores for all experiments in the log, showing hyperparameter indices.
     
@@ -147,4 +147,9 @@ def plot_experiments(log_path):
     plt.title("Validation Scores Across Experiments per Model")
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=300)
+        print(f"Figure saved to {save_path}")
+
     plt.show()
