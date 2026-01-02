@@ -1,4 +1,9 @@
-# Data files
-data/
-models/
-figures/
+# Ignore everything in these folders
+data/*
+models/*
+figures/*
+
+# But not .gitkeep
+!data/.gitkeep
+!models/.gitkeep
+!figures/.gitkeep
