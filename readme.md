@@ -19,12 +19,17 @@ conda activate ecosystem_project
 
 3. Dataset Preparation
 
+EXPLAIN THE DOWLOAD OF GITHUB AND WHAT THEY NEED TO ADD IN ORDER THAT EVERYTHING WORKS
+
 Before running the notebook, the aerial images must be prepared. This involves two steps:
 
 - Rename and place the images archive: Ensure the provided images archive is named images.zip and located in the data/ folder.
 - Extract and convert images: The notebook includes cells that will (a) unzip the archive and (b) convert the original .tif images into .png format for faster loading.
 
 ⚠️ Important: This preprocessing only needs to be run once. After the images are extracted and converted to .png, you can skip this step in all subsequent runs.
+ 
+ - Additonally the dataset_split.csv need to be added in the data/ folder
+ 
 
 4. Experiment Order
 

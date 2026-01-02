@@ -150,6 +150,5 @@ def plot_experiments(log_path, save_path=None):
 
     if save_path:
         plt.savefig(save_path, dpi=300)
-        print(f"Figure saved to {save_path}")
 
     plt.show()
