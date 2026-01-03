@@ -3,7 +3,12 @@ data/*
 models/*
 figures/*
 
-# But not .gitkeep
+# Allow .gitkeep files
 !data/.gitkeep
 !models/.gitkeep
 !figures/.gitkeep
+
+# Allow specific files
+!models/TabularStandard_0.pt
+!data/dataset_split.csv
+
