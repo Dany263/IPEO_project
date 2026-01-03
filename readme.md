@@ -69,9 +69,6 @@ conda activate ecosystem_project
 - Place the archive `images.zip` inside the `data/` folder:
     - data/images.zip
 
-- The file `dataset_split.csv` is already provided and must remain in `data/`.
-
-
 - The file `dataset_split.csv` is already provided and **must remain** in the `data/` directory.
 
 ### 4.2 Image Preprocessing (Run Once)
@@ -98,9 +95,9 @@ The notebook performs:
 - Training of **Tabular**, **Image**, and **Combined** models  
 - Model selection using **validation macro-F1 score**  
 - Evaluation:
-- Metrics
-- Confusion matrices
-- Permutation importance
+    - Metrics
+    - Confusion matrices
+    - Permutation importance
 
 Random seeds are fixed to ensure reproducibility when notebooks are run in the same order.
 
@@ -140,22 +137,21 @@ The inference notebook evaluates the following randomly selected sample IDs:
 ]
 ```
 
-7. Experiment Order (Summary)
+## 7. Experiment Order (Summary)
 
 Recommended execution order:
 
-1. Data preparation
+- 1. Data preparation
     - Unzip images
     - Convert `.tif` → `.png`
-2. Model training
+- 2. Model training
     - Run `ipeo_project.ipynb`
-3. Evaluation
+- 3. Evaluation
     - Metrics, confusion matrices, importance analysis
-4. Inference
+- 4. Inference
     - Run `inference.ipynb` on test samples
 
-8. Reproducibility
+## 8. Reproducibility
 
 - Random seeds are fixed.
 - All results reported in report.pdf are fully reproducible using this repository.
-- Specific files (dataset_split.csv, TabularStandard_0.pt) are version-controlled to ensure consistent behavior across runs.
