@@ -2,61 +2,142 @@ Mapping Swiss Ecosystems from Aerial Images and Environmental Variables
 
 Authors: Dany Montandon, Loïc Trochen
 Section: SIE
-Course: Image Processing for Earthi Observation
-Date: November/December 2025 & January 2026
+Course: Image Processing for Earth Observation
+Date: November–December 2025 & January 2026
 
 1. Overview
 
-This repository contains the code, and models to reproduce the analysis of Swiss ecosystems using aerial images and environmental variables.
-The full analysis and discussion are presented in the accompanying report.
+This repository contains the code, data preparation steps, and trained models required to reproduce our analysis of Swiss ecosystems using aerial imagery and environmental (tabular) variables.
 
-2. Environment Setup
+The complete methodology, experiments, and discussion of results are presented in the accompanying `report.pdf`
 
-Create the Python environment using:
+2. Repository Structure
+
+.
+├── data/
+│   ├── .gitkeep
+│   └── dataset_split.csv
+├── models/
+│   ├── .gitkeep
+│   └── TabularStandard_0.pt
+├── figures/
+│   └── .gitkeep
+├── utils/
+│   └── eunis_label.py
+│   └── scripts.py
+│   └── sweco_group_of_variables.py
+├── ipeo_project.ipynb
+├── inference.ipynb
+├── environment.yml
+├── experiment_log.csv
+├── report.pdf
+└── README.md
+
+Main files
+
+- `ipeo_project.ipynb`
+Main notebook containing the full pipeline: data preparation, model training, hyperparameter selection, and analysis.
+
+- `inference.ipynb`
+Lightweight notebook performing inference on a small set of test samples using the best trained model.
+
+- `report.pdf`
+Final report describing the methodology, experiments, and results.
+
+3. Environment Setup
+
+Create and activate the Conda environment using:
 
 conda env create -f environment.yml
 conda activate ecosystem_project
 
-3. Dataset Preparation
+4. Data Preparation
 
-EXPLAIN THE DOWLOAD OF GITHUB AND WHAT THEY NEED TO ADD IN ORDER THAT EVERYTHING WORKS
+4.1 Required data
 
-Before running the notebook, the aerial images must be prepared. This involves two steps:
+- Place the archive `images.zip` inside the data/ folder:
+    data/images.zip
 
-- Rename and place the images archive: Ensure the provided images archive is named images.zip and located in the data/ folder.
-- Extract and convert images: The notebook includes cells that will (a) unzip the archive and (b) convert the original .tif images into .png format for faster loading.
+- The file `dataset_split.csv` is already provided and must remain in `data/`.
 
-⚠️ Important: This preprocessing only needs to be run once. After the images are extracted and converted to .png, you can skip this step in all subsequent runs.
- 
- - Additonally the dataset_split.csv need to be added in the data/ folder
- 
+4.2 Image preprocessing (run once)
 
-4. Experiment Order
+In `ipeo_project.ipynb`, run the first two cells only to:
 
-- Data preparation: preprocess tabular data and images.
-- Model training: run the notebook training.ipynb to train Tabular, Image, or Combined models.
-- Evaluation: compute metrics, permutation importances, and confusion matrices.
-- Inference: run inference.ipynb on a test sample.
+- Unzip `images.zip`
 
-Place the best models (ADD THE NAME OF IT .pt) in the models/ folder before running inference.ipynb.
+- Convert the original `.tif` images to `.png` for faster loading
 
-5. Trained Model
+⚠️ Important:
+This preprocessing step only needs to be executed once.
+After the images are extracted and converted to `.png`, you can skip these cells in all subsequent runs.
 
-Download the best-performing model from
+5. Model Training and Experiments
 
-ADD A LINK TO DOWNLOAD THE BEST MODEL
+After preprocessing:
 
-6. Running Inference
+Run the remainder of `ipeo_project.ipynb` normally.
 
-The notebook inference.ipynb:
+The notebook performs:
 
-- Loads a sample image from the test set.
-- Loads the trained parameters of the best model.
-- Runs inference on the test sample.
-- Displays the predicted ecosystem class.
+Tabular data processing
 
-7. Additional Notes
+Image processing
 
-Random seeds are set for reproducibility if notebooks are run in the same order.
+Training of Tabular, Image, and Combined models
 
-All results shown in the report are fully reproducible using this repository.
+Model selection using validation macro-F1 score
+
+Evaluation (metrics, confusion matrices, permutation importance)
+
+Random seeds are fixed to ensure reproducibility when notebooks are run in the same order.
+
+6. Inference
+
+The `inference.ipynb` notebook:
+
+Loads the trained parameters of the best model
+
+Runs inference on selected test samples
+
+Displays predicted ecosystem classes
+
+Model file
+
+The trained model `TabularStandard_0.pt` is already included in:
+    models/TabularStandard_0.pt
+
+⚠️ Note:
+Re-running `ipeo_project.ipynb` with the same architecture and hyperparameters will overwrite this file.
+If that happens, the original model used in the report can be downloaded here:
+👉 ADD LINK
+
+Test samples used
+
+The inference notebook evaluates the following randomly selected sample IDs:
+['2743707_1218749',
+ '2708579_1271348',
+ '2748834_1205701',
+ '2556236_1203945',
+ '2496165_1116505']
+
+
+7. Experiment Order (Summary)
+
+Recommended execution order:
+
+    1. Data preparation
+    - Unzip images
+    - Convert `.tif` → `.png`
+    2. Model training
+    - Run `ipeo_project.ipynb`
+    3. Evaluation
+    - Metrics, confusion matrices, importance analysis
+    4. Inference
+    - Run `inference.ipynb` on test samples
+
+8. Reproducibility
+
+- Random seeds are fixed.
+- All results reported in report.pdf are fully reproducible using this repository.
+- Specific files (dataset_split.csv, TabularStandard_0.pt) are version-controlled to ensure consistent behavior across runs.
