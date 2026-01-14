@@ -120,12 +120,11 @@ The trained model `TabularStandard_0.pt` is already included in:
 ⚠️ **Note**  
 Re-running `ipeo_project.ipynb` with the same architecture and hyperparameters will overwrite this file.  
 If this happens, the original model used in the report can be downloaded here:
-
-👉 **ADD LINK**
+👉 [`LINK`](https://drive.google.com/file/d/1ONwLruxUrxspUkGJzkXuHhHDbcjmfZz2/view?usp=sharing)
 
 ### Test Samples Used
 
-The inference notebook evaluates the following randomly selected sample IDs:
+The inference notebook evaluates the following randomly selected test sample IDs:
 
 ```python
 [

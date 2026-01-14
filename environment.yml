@@ -12,6 +12,8 @@ dependencies:
   - geopandas
   - contextily
   - shapely
+  - pyproj
+  - rtree
   - scikit-learn
   - jupyter
   - pip:
